@@ -23,6 +23,7 @@ public class MessageController {
     @GetMapping("/publish/{message}")
     public String publishMessage(@PathVariable("message") final String name) {
 
+    	kafkaTemplate.send(DESTINATION_TOPIC, new User(name,"Sample"));
 //    	kafkaTemplate.send("Kafka_example", name);
         return "Published successfully";
     }
