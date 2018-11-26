@@ -20,16 +20,17 @@ public class MessageController {
     @Autowired
     private KafkaTemplate<String, User> kafkaTemplate;
 
-   /* @GetMapping("/publish/{message}")
+    @GetMapping("/publish/{message}")
     public String publishMessage(@PathVariable("message") final String name) {
 
 //    	kafkaTemplate.send("Kafka_example", name);
         return "Published successfully";
-    }*/
+    }
     
     @PostMapping("/publishJson")
     public String publishJsonMessage(@RequestBody User user) {
     	
+    	System.out.println("Entered into method");
     	kafkaTemplate.send(DESTINATION_TOPIC, user);
 		return "Successfully pulbished message to "+ DESTINATION_TOPIC;
     	
