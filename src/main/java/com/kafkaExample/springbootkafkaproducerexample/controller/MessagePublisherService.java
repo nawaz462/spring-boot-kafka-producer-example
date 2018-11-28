@@ -30,6 +30,7 @@ public class MessagePublisherService {
 	public String publishToInboundTopic(User user) {
 		
 		String PUBLISHER_RESPONSE = "";
+		
 		try {
 			outBoundTopic1MessageSender.send(MessageBuilder.withPayload(user).setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON).build());
 			logger.info("Message Published successfully to topic ");
@@ -42,7 +43,6 @@ public class MessagePublisherService {
 		}
 		
 		return PUBLISHER_RESPONSE;
-		
 	}
 	
 	public void publishToOutboundTopic(User user) {
