@@ -21,7 +21,7 @@ public class MessageListener {
 	@StreamListener(MessageStreams.InBoundTopic1)
     public void handleGreetings(@Payload User userInfo) {
 		
-		logger.info("Consumed JSON Message : ", userInfo);
+		logger.info("Consumed JSON Message : "+ userInfo);
 		
 		//Processing - Updating the name in input JSON
 		userInfo.setName(userInfo.getName()+"_Updated");
